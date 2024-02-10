@@ -18,14 +18,14 @@ export type CounterStore = ICounterStoreState & ICounterStoreActions
 export const counterStoreFactory = () =>
   create<CounterStore>()(
     devtools(
-      immer((set, get, state2) => ({
+      immer(set => ({
         counter: 0,
 
-        increase: by =>
+        increase: by => {
           set(state => {
-            console.log('state2', state2)
             state.counter += by
-          }),
+          })
+        },
 
         reset: () => set({ counter: 0 })
       }))

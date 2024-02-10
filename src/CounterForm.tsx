@@ -1,5 +1,5 @@
 import ResetBtn from './ResetBtn'
-import { CounterStore, useAppStore } from './stores/AppStore'
+import { CounterStore, useAppStore } from './zustand/AppStore'
 
 export interface ICounterFormProps {
   counterStore: CounterStore

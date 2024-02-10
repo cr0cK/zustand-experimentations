@@ -1,4 +1,4 @@
-import { CounterStore } from './stores/AppStore'
+import { CounterStore } from './zustand/AppStore'
 
 export interface IResetBtnProps {
   counterStore: CounterStore
