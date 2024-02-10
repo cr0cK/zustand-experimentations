@@ -1,13 +1,13 @@
-import { useAppStore } from './stores/AppStore'
+import { CounterStore } from './stores/AppStore'
 
-export interface IResetBtnProps {}
+export interface IResetBtnProps {
+  counterStore: CounterStore
+}
 
-export default function ResetBtn() {
-  const appStore = useAppStore()
-
+export default function ResetBtn(props: IResetBtnProps) {
   return (
     <div>
-      <button type="button" onClick={() => appStore.reset()}>
+      <button type="button" onClick={() => props.counterStore.reset()}>
         Reset
       </button>
     </div>

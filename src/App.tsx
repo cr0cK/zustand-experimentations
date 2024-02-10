@@ -1,28 +1,19 @@
 import './App.css'
-import ResetBtn from './ResetBtn'
-import { useAppStore } from './stores/AppStore'
+import CounterForm1 from './CounterForm1'
+import CounterForm2 from './CounterForm2'
 
 function App() {
-  const appStore = useAppStore()
+  console.log('reload App')
 
   return (
     <>
-      <h1>Vite + React</h1>
+      {/* <CounterForm counterStore={counterStore1} /> */}
+      <CounterForm1 />
+      <CounterForm2 />
 
-      <div className="card">
-        <button type="button" onClick={() => appStore.increase(1)}>
-          count is {appStore.counter}
-        </button>
+      <hr />
 
-        <ResetBtn />
-
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* <CounterForm counterStore={counterStore2} /> */}
     </>
   )
 }

@@ -2,28 +2,45 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 
-interface IAppState {
+interface ICounterStoreState {
   counter: number
   increase: (by: number) => void
   reset: () => void
 }
 
-interface IAppActions {
+interface ICounterStoreActions {
   increase: (by: number) => void
   reset: () => void
 }
 
-export const useAppStore = create<IAppState & IAppActions>()(
-  devtools(
-    immer(set => ({
-      counter: 0,
+export type CounterStore = ICounterStoreState & ICounterStoreActions
 
-      increase: by =>
-        set(state => {
-          state.counter += by
-        }),
+export const counterStoreFactory = () =>
+  create<CounterStore>()(
+    devtools(
+      immer((set, get, state2) => ({
+        counter: 0,
 
-      reset: () => set({ counter: 0 })
-    }))
+        increase: by =>
+          set(state => {
+            console.log('state2', state2)
+            state.counter += by
+          }),
+
+        reset: () => set({ counter: 0 })
+      }))
+    )
   )
-)
+
+export const useCounterStore1 = counterStoreFactory()
+export const useCounterStore2 = counterStoreFactory()
+
+interface IAppStoreState {
+  doubleIncrease: (counterStore: CounterStore) => void
+}
+
+export const useAppStore = create<IAppStoreState>()(() => ({
+  doubleIncrease: (counterStoreState: CounterStore) => {
+    counterStoreState.increase(2)
+  }
+}))
