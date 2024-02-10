@@ -1,0 +1,10 @@
+# Copy again .eslintignore file for VSCode that reads only this file at the
+# root level.
+
+# Static & External librairies & build files
+dist
+node_modules
+
+# Configs
+vite.config.ts
+.eslintrc.js

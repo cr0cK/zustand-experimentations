@@ -1,6 +1,5 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import ResetBtn from './ResetBtn'
 import { useAppStore } from './stores/AppStore'
 
 function App() {
@@ -8,21 +7,14 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
       <h1>Vite + React</h1>
+
       <div className="card">
-        <button onClick={() => appStore.increase(1)}>
+        <button type="button" onClick={() => appStore.increase(1)}>
           count is {appStore.counter}
         </button>
 
-        <button onClick={() => appStore.reset()}>Reset</button>
+        <ResetBtn />
 
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
